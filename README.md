@@ -29,3 +29,16 @@ sudo docker run -v  /opt/Xilinx/:/opt/Xilinx/ -v $(pwd):/home/petalinux/Work/ -i
 * setenv bootargs "ip=192.168.0.111:192.168.0.100 root=/dev/nfs rootfstype=nfs nfsroot=192.168.0.100:/mnt/nfs_share/k26/,nfsvers=3,tcp rw";
 * setenv serverip 192.168.0.100
 * setenv ipaddr 192.168.0.111
+
+### swith to JTAG boot mode
+```
+############################
+# Switch to JTAG boot mode #
+############################
+targets -set -filter {name =~ "PSU"}
+mwr 0xffca0010 0x0
+mwr 0xff5e0200 0x0100
+rst -system
+```
+
+
