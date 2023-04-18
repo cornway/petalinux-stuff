@@ -63,4 +63,23 @@ pxe boot
 
 ```
 
+### Start tigervnc server :
+Add tigervnc in petalinuxbsp.conf :
+```
+IMAGE_INSTALL:append += "tigervnc"
+```
+Start X server :
+```
+# WA: need permissions to access console
+sudo chown -R petalinux:tty /dev/tty*
+
+startx
+
+# Start igervnc server :
+x0vncserver -display :0 -SecurityTypes=none
+
+```
+
+
+
 
